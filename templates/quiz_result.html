@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}結果 - クイズサイト{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align: center;">
+    <h2>結果発表</h2>
+    
+    {% if result.correct %}
+    <div style="font-size: 4em; color: #4caf50; margin: 20px 0;">✅</div>
+    <h3 style="color: #4caf50;">正解です！</h3>
+    {% else %}
+    <div style="font-size: 4em; color: #f44336; margin: 20px 0;">❌</div>
+    <h3 style="color: #f44336;">不正解です</h3>
+    <p style="margin: 20px 0;">正解は選択肢{{ result.correct_answer + 1 }}でした。</p>
+    {% endif %}
+    
+    <div style="margin-top: 30px;">
+        <a href="{{ url_for('take_quiz') }}" class="btn">もう一度挑戦</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary" style="margin-left: 10px;">ダッシュボードへ</a>
+    </div>
+</div>
+{% endblock %}

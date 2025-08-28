@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}新規登録 - クイズサイト{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 50px auto;">
+    <h2 style="text-align: center; margin-bottom: 30px; color: #333;">🧠 クイズサイト</h2>
+    <h3 style="text-align: center; margin-bottom: 30px; color: #666;">新規登録</h3>
+    
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">ユーザー名:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div style="text-align: center;">
+            <button type="submit" class="btn">登録</button>
+        </div>
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <p>既にアカウントをお持ちの方は <a href="{{ url_for('login') }}" style="color: #667eea; text-decoration: none; font-weight: 600;">こちらからログイン</a></p>
+    </div>
+</div>
+{% endblock %}
