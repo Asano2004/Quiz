@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}ランキング - クイズサイト{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>🏆 ランキング</h2>
+    
+    {% if rankings %}
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th>順位</th>
+                <th>ユーザー名</th>
+                <th>回答数</th>
+                <th>正解数</th>
+                <th>正解率</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ranking in rankings %}
+            <tr>
+                <td>
+                    {% if loop.index == 1 %}🥇
+                    {% elif loop.index == 2 %}🥈
+                    {% elif loop.index == 3 %}🥉
+                    {% else %}{{ loop.index }}
+                    {% endif %}
+                </td>
+                <td><strong>{{ ranking.username }}</strong></td>
+                <td>{{ ranking.total_answers }}</td>
+                <td>{{ ranking.correct_answers }}</td>
+                <td>{{ ranking.accuracy }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p style="text-align: center; color: #666; margin: 50px 0;">まだランキングデータがありません。</p>
+    {% endif %}
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('take_quiz') }}" class="btn">クイズに挑戦してランクアップ！</a>
+    </div>
+</div>
+{% endblock %}
